@@ -18,15 +18,11 @@ class XSort:
         return data
     def insert_sort(self, data):
         for i in range(1, len(data)):
-            j=i-1
-            temp=data[i]
-            for k in range(j, -1, -1):
-                if data[j]<temp:
-                    j=k+1
-                    break
-                else:
-                    data[j+1]=data[j]
-            data[j]=temp
+            key = data[i]
+            j = i - 1
+            # 정렬된 부분(0 ~ i-1)을 뒤에서부터 탐색
+            while j >= 0 and data[j] > key:
+                data[j + 1] = data[j] # 오른쪽으로 한 칸 이동
+                j -= 1
+            data[j + 1] = key
         return data
-
-
